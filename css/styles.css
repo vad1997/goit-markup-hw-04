@@ -106,12 +106,25 @@ img {
   padding-top: 24px;
   padding-bottom: 24px;
   display: block;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
+.header-menu-link.current::after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 4px;
+  background-color: var(--ocean);
+  border-radius: 2px;
+  position: absolute;
+  bottom: -1px;
+}
+
 .header-menu-link:hover,
 .header-menu-link:focus {
   color: var(--ocean);
 }
-.curent {
+.current {
   color: var(--ocean);
 }
 .header-contacts {
@@ -126,6 +139,7 @@ img {
 }
 .header-contacts-link {
   color: var(--slate);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header-contacts-link:hover,
 .header-contacts-link:focus {
@@ -173,6 +187,7 @@ img {
   padding: 16px 32px;
   border: none;
   border-radius: 4px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-btn:hover,
 .hero-btn:focus {
@@ -274,6 +289,7 @@ img {
   border: none;
   background-color: var(--iris);
   background-size: contain;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .team-link-list:hover,
 .team-link-list:focus {
@@ -346,6 +362,7 @@ img {
   justify-content: center;
   width: 168px;
   height: 88px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .customers-link:hover,
 .customers-link:focus {
@@ -353,6 +370,7 @@ img {
 }
 .customers-icon {
   fill: var(--light-slate);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-link:hover .customers-icon,
@@ -389,6 +407,8 @@ img {
   padding: 12px 24px;
   border: none;
   border-radius: 4px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .portfolio-filter-btn:hover,
 .portfolio-filter-btn:focus {
@@ -403,12 +423,36 @@ img {
   column-gap: 24px;
 }
 .portfolio-projects-card {
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .portfolio-projects-card:hover {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16),
     0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 .porfolio-projects-img {
+}
+.portfolio-projects-group {
+  position: relative;
+  overflow: hidden;
+}
+.overlay {
+  background-color: var(--ocean);
+  width: 360px;
+  height: 300px;
+  padding: 40px 32px;
+  background-blend-mode: soft-light;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.portfolio-projects-card:hover .overlay {
+  transform: translateY(0);
+}
+.ovelay-text {
+  color: var(--cloud);
 }
 .portfolio-projects-wrapper {
   padding: 32px 16px;
@@ -492,10 +536,55 @@ img {
   height: 40px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-icon {
 }
 .social-link:hover,
 .social-link:focus {
   background-color: var(--green);
+}
+/* Modal Window */
+.backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: opacity 250ms ease, visibility 250ms ease;
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+.modal {
+  width: 408px;
+  height: 576px;
+  background: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-icon {
 }
